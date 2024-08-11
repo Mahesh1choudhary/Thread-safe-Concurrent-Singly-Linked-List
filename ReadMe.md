@@ -1,0 +1,6 @@
+# Thread safe singly Linked List Implementation
+##### Note: This implementation is used as helper class in my project- Thread safe LRU cache system, So only functions that are needed are implemented, and the structure also differe from normal implementation; But the idea can be used to implement general thread safe linked list.
+
+We have a Node structure with given value and mutex. We choose shared_mutex for this to allow multiple reads to the same node and single write at a time. When multiple thread wants to erase a single value in linkedlist, they have to check each node and finally removes one node. So no of reads will be much higher than write, therefore shared_mutex is more efficient here.
+
+Each Node has a lock. When we want to remove a node, we have to take lock on previous node, current node and next node in this order to avoid deadlock and maintain thread safety. Also since it is singly linked list, so movement is possible in one direction only; But in case of Double linked list also , we have to limit movement in one direction only to avoid deadlock.
