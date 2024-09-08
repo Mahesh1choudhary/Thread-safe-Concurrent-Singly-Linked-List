@@ -131,7 +131,6 @@ namespace CLL{  // Concurrent LinkedList Library
 
 
 
-            std::mutex display_mutex;
             // function to display current list elements, while displaying updates are possible to elements- so this is for testing purpose only
             void display_list(){
                 std::unique_lock<std::mutex> lock_prev(head->mutex_);
